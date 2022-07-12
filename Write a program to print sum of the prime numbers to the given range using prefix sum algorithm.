@@ -1,0 +1,37 @@
+INPUT:
+import math
+n=10000001
+seive=[True]*n
+prefix=[0]*n
+seive[0]=seive[1]=False
+x=int(math.sqrt(n))
+for i in range(2,x+1):
+    if seive[i]:
+        for j in range(i*i,n,i):
+            seive[j]=False
+for i in range(2,n):
+    if seive[i]:
+        prefix[i]=prefix[i-1]+1
+    else:
+        prefix[i]=prefix[i-1]
+t=int(input())
+i=1
+sum=0
+while(i<=t):
+    m=int(input('enter no:'))
+    print(prefix[m])
+    i+=1
+    sum=sum+prefix[m]
+    print('sum:',sum)
+    
+OUTPUT:
+3
+enter no:12
+5
+sum: 5
+enter no:32
+11
+sum: 16
+enter no:54
+16
+sum: 32
